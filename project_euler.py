@@ -14,8 +14,6 @@ import problem9 as p9
 import problem10 as p10
 import problem11 as p11
 
-# https://projecteuler.net 
-
 def main():
 	logging.basicConfig(level=logging.DEBUG, format="[%(levelname)s] %(asctime)s - %(message)s")
 	if len(sys.argv) < 2: 
