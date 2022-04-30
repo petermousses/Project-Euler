@@ -4,20 +4,15 @@
 """
 def isPrime(n) -> bool:
 	if n <= 3: return n > 1
-	if not n%2 or not n%3: return False
+	if not n % 2 or not n % 3: return False
 	i = 5
 	while i <= int(n**0.5):
-		if not n%i or not n%(i + 2):
+		if not n % i or not n % (i + 2):
 			return False
 		i += 6
 	#print(n)
 	return True
 
-def sumOfPrimesBelow(target) -> int:
-	sum = 0
-	for num in range(target):
-		if isPrime(num): sum += num
-	return sum
 def main():
-	print(sumOfPrimesBelow(2000000))
+	print(sum(num for num in range(2000000) if isPrime(num)))
 if __name__ == '__main__': main()
