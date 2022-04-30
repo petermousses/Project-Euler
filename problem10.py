@@ -5,12 +5,8 @@
 def isPrime(n) -> bool:
 	if n <= 3: return n > 1
 	if not n % 2 or not n % 3: return False
-	i = 5
-	while i <= int(n**0.5):
-		if not n % i or not n % (i + 2):
-			return False
-		i += 6
-	#print(n)
+	for i in range(5, int(n**0.5) + 1, 6):
+		if not n % i or not n % (i + 2): return False
 	return True
 
 def main():

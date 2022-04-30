@@ -5,9 +5,8 @@
 def isPrime(n) -> bool:
 	if n <= 3: return n > 1
 	if not n % 2 or not n % 3: return False
-	for i in range(5, int(n**0.5)):
+	for i in range(5, int(n**0.5) + 1, 6):
 		if not n % i or not n % (i + 2): return False
-		i += 6
 	return True
 
 def findLargestPrimeFactor(largestPrimeFactor, num = 600851475143):
