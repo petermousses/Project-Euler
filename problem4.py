@@ -5,12 +5,7 @@
 	Find the largest palindrome made from the product of two 3-digit numbers.
 """
 def isPalindrome(num) -> bool:
-	initialStrArr = list(str(num))
-	reverseStrArr = []
-	for reverse_index in range(len(initialStrArr) - 1, -1, -1):
-		reverseStrArr.append(initialStrArr[reverse_index])
-	if (int(''.join(initialStrArr))) != (int(''.join(reverseStrArr))): return False
-	return True
+	return str(num) == str(num)[::-1]
 
 def generatePalindromes(digit_len) -> tuple:
 	max_palindrome_product = 0
