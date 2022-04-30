@@ -5,14 +5,13 @@ functionCallCounter = 1
 def isPrime(n) -> bool:
 	global functionCallCounter
 	if n <= 3: return n > 1
-	if not n%2 or not n%3: return False
+	if not n % 2 or not n % 3: return False
 	i = 5
 	while i <= int(n**0.5):
-		if not n%i or not n%(i + 2):
+		if not n % i or not n % (i + 2):
 			return False
 		i += 6
 	functionCallCounter += 1
-	print(n)
 	return True
 
 def main():
