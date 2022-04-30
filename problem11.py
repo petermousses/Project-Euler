@@ -60,6 +60,16 @@ def getProductRev(l, num, row, col) -> int:
 	for offset in range(num):
 		product *= int(l[row - offset][col - offset])
 	return product
+def getProductUpsideDown(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row - offset][col - offset])
+	return product
+def getProductRevUpsideDown(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row + offset][col - offset])
+	return product
 
 def findDiagonalProduct(num) -> int:
 	global greatest_product
@@ -75,8 +85,19 @@ def findDiagonalProduct(num) -> int:
 			#print(row, col, sep=' ')
 			prod = getProductRev(l, num, row, col)
 			if prod > greatest_product: greatest_product = prod
+	for row in range(len(l) - num):
+		for col in range(len(l[0]) - num):
+			#print(row, col, sep=' ')
+			prod = getProductUpsideDown(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
+	for row in range(len(l) - num - 1, 0):
+		for col in range(len(l[0]) - num - 1, 0):
+			#print(row, col, sep=' ')
+			prod = getProductRevUpsideDown(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
 
 def main():
+	print("UNSOLVED")
 	findDiagonalProduct(4)
 	print(greatest_product)
 if __name__ == '__main__': main()
