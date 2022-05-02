@@ -12,18 +12,16 @@
 	We can see that 28 is the first triangle number to have over five divisors.
 	What is the value of the first triangle number to have over five hundred divisors?
 """
-def checkDivisibility(num, largest_divisor) -> bool:
-	for divisor in range(largest_divisor, 0, -1):
-		if num % divisor != 0: return False
-	return True
+def getNumFactors(num) -> int:
+	return sum(2 for i in range(1, round((num**0.5)+1)) if not num % i)
 	
-def getNumDivisors(num):
-	print()
+def getTriangleNum(num) -> int:
+	return num * (num + 1) >> 1
 
-def getTriangleNumForDivisor(divisor):
-	print(divisor)
-	print(sum(num for num in range(1, 7 + 1)))
+def getTriangleNumForDivisor(numOfDivisors, limit=10**5) -> int:
+	for num in list(map(getTriangleNum, range(1, limit + 1))):
+		if getNumFactors(num) >= numOfDivisors: return num
 
 def main():
-	getTriangleNumForDivisor(5)
+	print(getTriangleNumForDivisor(500))
 if __name__ == '__main__': main()
