@@ -70,30 +70,48 @@ def getProductRevUpsideDown(l, num, row, col) -> int:
 	for offset in range(num):
 		product *= int(l[row + offset][col - offset])
 	return product
+def getProductUp(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row + offset][col])
+	return product
+def getProductDown(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row - offset][col])
+	return product
+def getProductRight(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row][col + offset])
+	return product
+def getProductLeft(l, num, row, col) -> int:
+	product = 1
+	for offset in range(num):
+		product *= int(l[row][col - offset])
+	return product
 
 def findDiagonalProduct(num) -> int:
 	global greatest_product
 	l = makeDataStruct()
-	# print(getProduct(l, num, 6, 8)) # 1788696
-	for row in range(len(l) - num):
-		for col in range(len(l[0]) - num):
-			#print(row, col, sep=' ')
+	print(getProduct(l, num, 6, 8)) # 1788696
+	for row in range(num - 1, len(l) - num):
+		for col in range(num - 1, len(l) - num):
 			prod = getProduct(l, num, row, col)
 			if prod > greatest_product: greatest_product = prod
-	for row in range(len(l) - num - 1, 0):
-		for col in range(len(l[0]) - num - 1, 0):
-			#print(row, col, sep=' ')
 			prod = getProductRev(l, num, row, col)
 			if prod > greatest_product: greatest_product = prod
-	for row in range(len(l) - num):
-		for col in range(len(l[0]) - num):
-			#print(row, col, sep=' ')
 			prod = getProductUpsideDown(l, num, row, col)
 			if prod > greatest_product: greatest_product = prod
-	for row in range(len(l) - num - 1, 0):
-		for col in range(len(l[0]) - num - 1, 0):
-			#print(row, col, sep=' ')
 			prod = getProductRevUpsideDown(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
+			prod = getProductUp(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
+			prod = getProductDown(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
+			prod = getProductRight(l, num, row, col)
+			if prod > greatest_product: greatest_product = prod
+			prod = getProductLeft(l, num, row, col)
 			if prod > greatest_product: greatest_product = prod
 
 def main():
