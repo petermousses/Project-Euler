@@ -14,8 +14,7 @@ sum_even = 0
 @cache
 def fibonacci(num = 32 + 1):
 	global sum_even
-	if num == 0: return 0
-	elif num == 1: return 1
+	if num <= 1: return num == 1
 	else: 
 		num1 = fibonacci(num - 1)
 		if num1 % 2 == 0: sum_even += num1
